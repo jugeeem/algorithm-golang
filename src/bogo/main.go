@@ -35,5 +35,5 @@ func execute() {
 }
 
 func main() {
-	pkg.Measure("Bogo Sort", execute)
+	pkg.MeasureWithWait("Bogo Sort", execute)
 }

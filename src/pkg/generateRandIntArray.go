@@ -4,8 +4,8 @@ import "math/rand"
 
 // GenerateRandIntArray はランダムな整数配列を生成して返します。
 func GenerateRandIntArray() []int {
-	arraySize := 10
-	maxRange := 100
+	arraySize := 100
+	maxRange := 100000
 
 	// ランダムな整数配列を生成
 	array := make([]int, arraySize)
