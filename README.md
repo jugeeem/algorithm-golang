@@ -56,7 +56,7 @@ go run main.go
 
 ### ソートアルゴリズム
 - [x] ボゴソート (Bogo Sort)
-- [ ] バブルソート (Bubble Sort)
+- [x] バブルソート (Bubble Sort)
 - [ ] 選択ソート (Selection Sort)
 - [ ] 挿入ソート (Insertion Sort)
 - [ ] マージソート (Merge Sort)
@@ -75,10 +75,21 @@ go run main.go
 ```go
 import "algorithm-golang/src/pkg"
 
-// 使用例
-startTime := time.Now()
-// アルゴリズム実行
-pkg.ExecuteTime(startTime)
+// 同期実行（従来の方法）
+pkg.Measure("Algorithm Name", func() {
+    // アルゴリズム実行
+})
+
+// 非同期実行（goroutineを使用）
+pkg.MeasureWithWait("Algorithm Name", func() {
+    // アルゴリズム実行
+})
+
+// 複数のアルゴリズムを並行実行
+pkg.MeasureConcurrent(map[string]func(){
+    "Algorithm1": func() { /* 実行 */ },
+    "Algorithm2": func() { /* 実行 */ },
+})
 ```
 
 ### generateRandIntArray.go
@@ -87,8 +98,8 @@ pkg.ExecuteTime(startTime)
 ```go
 import "algorithm-golang/src/pkg"
 
-// 使用例
-arr := pkg.GenerateRandIntArray(10, 100) // 10個の要素、最大値100
+// 使用例（デフォルト: 100要素、範囲0-99999）
+arr := pkg.GenerateRandIntArray()
 ```
 
 ## 👤 作成者

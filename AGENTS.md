@@ -47,9 +47,10 @@
 - [ ] エッジケース（空配列、単一要素など）に対応しているか
 
 #### パフォーマンス検証
-- 実行時間を計測（`pkg.ExecuteTime`を使用）
+- 実行時間を計測（`pkg.Measure`または`pkg.MeasureWithWait`を使用）
 - 異なるデータサイズでの動作確認
 - 理論的な計算量と実測値の比較
+- 必要に応じて`pkg.MeasureConcurrent`で複数アルゴリズムを並行比較
 
 ### 4. コードレビューのポイント
 
@@ -135,29 +136,30 @@ go run main.go
 package main
 
 import (
-    "algorithm-golang/src/pkg"
     "fmt"
-    "time"
+    "github.com/jugeeem/algorithm-golang/src/pkg"
 )
 
 // [AlgorithmName]Sort は[説明]を行う
 // 時間計算量: O(...)
 // 空間計算量: O(...)
-func [AlgorithmName]Sort(arr []int) []int {
+func [AlgorithmName]Sort(numbers []int) []int {
     // 実装
-    return arr
+    return numbers
+}
+
+func execute() {
+    numbers := pkg.GenerateRandIntArray()
+    sortedNumbers := [AlgorithmName]Sort(numbers)
+    fmt.Println("Sorted Numbers:", sortedNumbers)
 }
 
 func main() {
-    startTime := time.Now()
+    // 同期実行の場合
+    pkg.Measure("[Algorithm Name]", execute)
     
-    arr := pkg.GenerateRandIntArray(10, 100)
-    fmt.Println("Before:", arr)
-    
-    sorted := [AlgorithmName]Sort(arr)
-    fmt.Println("After:", sorted)
-    
-    pkg.ExecuteTime(startTime)
+    // 非同期実行の場合（推奨）
+    // pkg.MeasureWithWait("[Algorithm Name]", execute)
 }
 ```
 
