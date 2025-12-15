@@ -18,6 +18,7 @@ algorithm-golang/
 ├── src/
 │   ├── bogo/              # ボゴソート実装
 │   ├── bubble/            # バブルソート実装
+│   ├── cocktail/          # カクテルソート実装
 │   └── pkg/
 │       ├── executeTime.go          # 実行時間計測ユーティリティ
 │       └── generateRandIntArray.go # ランダム配列生成ユーティリティ
@@ -50,6 +51,10 @@ go run main.go
 # バブルソートの実行
 cd src/bubble
 go run main.go
+
+# カクテルソートの実行
+cd src/cocktail
+go run main.go
 ```
 
 ## 📖 実装済み・実装予定のアルゴリズム
@@ -57,6 +62,7 @@ go run main.go
 ### ソートアルゴリズム
 - [x] ボゴソート (Bogo Sort)
 - [x] バブルソート (Bubble Sort)
+- [x] カクテルソート (Cocktail Sort)
 - [ ] 選択ソート (Selection Sort)
 - [ ] 挿入ソート (Insertion Sort)
 - [ ] マージソート (Merge Sort)
